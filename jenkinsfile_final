@@ -10,7 +10,7 @@ pipeline {
       stage('checkout') {
             steps {
                 echo 'Cloning GIT HUB Repo '
-				git branch: 'main', url: 'https://github.com/devopstraininghub/mindcircuit13.git'
+				git branch: 'main', url: 'https://github.com/chittenaresh/task-12.git'
             }  
         }
 		
@@ -22,8 +22,8 @@ pipeline {
                 sh 'ls -ltr'
                 
                 sh ''' mvn sonar:sonar \\
-                      -Dsonar.host.url=http://44.210.116.12:9000 \\
-                      -Dsonar.login=squ_a46b6947d43a812180415ff94219120d2ddebcea'''
+                      -Dsonar.host.url=http://13.235.99.23:9000 \\
+                      -Dsonar.login=squ_200bbb3fecde32c7faa6cf27603be03a4c6ee254'''
             }
     	}
 		
@@ -49,8 +49,7 @@ pipeline {
        stage('Push to Dockerhub') {
             steps {
 			 script {
-			withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerhub')]) 
-			{
+			    withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerhub')]) {
             sh 'docker login -u chittenaresh -p ${dockerhub}'
 			
 			 }
@@ -66,7 +65,7 @@ pipeline {
     stage('Update Deployment File') {
 		
 		 environment {
-            GIT_REPO_NAME = "tasl-12"
+            GIT_REPO_NAME = "task-12"
             GIT_USER_NAME = "chittenaresh"
         }
 		

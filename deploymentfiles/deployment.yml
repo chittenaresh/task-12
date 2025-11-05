@@ -6,7 +6,7 @@ metadata:
   labels:
     app: mc-app
 spec:
-  replicas: 8
+  replicas: 4
   selector:
     matchLabels:
       app: mc-app
@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: mc-app
-        image: chittenaresh/team12:2
+        image: chittenaresh/team12:3
         ports:
         - containerPort: 8080
 

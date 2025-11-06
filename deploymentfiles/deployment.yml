@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: mc-app
-        image: chittenaresh/team12:4
+        image: chittenaresh/team12:1
         ports:
         - containerPort: 8080
 
